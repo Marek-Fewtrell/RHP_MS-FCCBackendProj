@@ -50,8 +50,8 @@ app.route('/whoami')
 function handleParsing(input) {
   var tempReturnObj = {"ipaddress": null, "language": null, "software": null};
   tempReturnObj.ipaddress = input.headers.host;
-  tempReturnObj.language = input.headers['accept-language'];
-  tempReturnObj.software = input.headers['user-agent'];
+  tempReturnObj.language = input.headers['accept-language'].split(',')[0];
+  tempReturnObj.software = input.headers['user-agent'].split('(')[1].split(')')[0];
 
   return tempReturnObj;
 }
